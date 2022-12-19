@@ -3,4 +3,6 @@ from django.db import models
 
 
 class User(AbstractUser):
-    pass
+    
+    avatar_img = models.URLField()
+    following = models.ManyToManyField('self', related_name='followers')
