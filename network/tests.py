@@ -24,7 +24,7 @@ class CreatePostTestCase(TestCase):
 
     def test_post_valid_likes(self):
         p = Post.objects.get(content = 'This is a test content')
-        self.assertTrue(p.likes >= 0)
+        self.assertTrue(p.likes < 0)
     
     def test_index(self):
         c = Client()
