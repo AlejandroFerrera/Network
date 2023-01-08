@@ -17,9 +17,10 @@ class CreatePostTestCase(TestCase):
         u = User.objects.get(username='TestUser')
         self.assertEqual(u.posts.count(), 1)
 
-    def test_post_owner_count(self):
+    def test_assign_owner(self):
         p = Post.objects.get(content='This is a test content')
-        self.assertTrue(p.owner, 'No puede tener mas de un dueño el post')
+        u = User.objects.get(username='TestUser')
+        self.assertTrue(p.owner, u)
 
     def test_post_valid_likes(self):
         p = Post.objects.get(content = 'This is a test content')
