@@ -1,4 +1,4 @@
-from django.test import TestCase
+from django.test import TestCase, Client
 from .models import User, Post
 
 
@@ -24,5 +24,11 @@ class CreatePostTestCase(TestCase):
     def test_post_valid_likes(self):
         p = Post.objects.get(content = 'This is a test content')
         self.assertTrue(p.likes >= 0)
+    
+    def test_index(self):
+        c = Client()
+        response = c.get("/")
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.context["posts"].count(), 1)
     
     
