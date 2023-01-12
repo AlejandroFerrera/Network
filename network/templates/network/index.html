@@ -2,11 +2,14 @@
 
 {% block body %}
 <main class="feed w-50 mx-auto">
-    <section class="new-post-container text-center">
+
+    {% if user.is_authenticated %}
+    <form class="new-post-container text-center">
       <img src="../../static/network/avatar.png" alt="" />
       <textarea rows="3" type="textarea" class="form-control"></textarea>
       <button class="button-36" type="submit">Post</button>
-    </section>
+    </form>
+    {% endif %}
     
     <hr>
 
