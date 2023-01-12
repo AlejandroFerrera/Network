@@ -1,13 +1,23 @@
 from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.decorators import login_required
 from django.db import IntegrityError
 from django.http import HttpResponse, HttpResponseRedirect
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.urls import reverse
 
 from .models import User, Post
 
-
 def index(request):
+
+    if request.method == 'POST':
+
+        if not request.user.is_authenticated:
+            return redirect('index')
+
+        content = request.POST['new_post_content']
+        Post.objects.create(owner = request.user, content = content)
+        
+
     posts = Post.objects.all()
     return render(request, "network/index.html", {'posts': posts})
 
