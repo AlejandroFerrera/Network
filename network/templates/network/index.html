@@ -1,4 +1,5 @@
 {% extends "network/layout.html" %} {% block body %}
+
 <main class="feed w-50 mx-auto">
   {% if user.is_authenticated %}
   <form method="post" class="new-post-container text-center">
@@ -37,15 +38,16 @@
       </div>
 
       <div class="likes">
-        <img src="../../static/network/like.png" alt="">
+        <img src="../../static/network/like.png" alt="" />
         <p class="m-0 ml-1">{{ post.likes }}</p>
       </div>
 
-      <hr>
+      <hr />
 
       <footer>
         <div class="row actions">
-          
+          <i class="fa-brands fa-github-square"></i>
+          <!-- uses brand style -->
         </div>
       </footer>
     </article>
