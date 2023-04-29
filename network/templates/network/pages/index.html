@@ -4,29 +4,27 @@
 
   <div class="wrapper container">
     <div class="row">
-      <aside class="col-sm-3">
+      <aside class="col-sm-2">
         <!-- Contenido aside de la izquierda -->
       </aside>
 
-      <div class="col-sm-6">
+      <div class="col-sm-8">
         <!-- Contenido central -->
         <section class="new-post">
           {% if user.is_authenticated %}
-            {% include 'network/new_post.html' %}
+            {% include 'network/components/new_post.html' %}
           {% endif %} 
         </section>
 
-        <h1 class="text">All Posts</h1>
-
         <section class="feed">
           {% for post in posts %}
-          <article class="post border border-danger p-3 m-3">
-            <header class="row d-flex flex-row">
-              <div class="col-1 profile-pic">
-                <img src="../../static/network/avatar.png" alt="" width="20px" />
+          <article class="post">
+            <header class="row d-flex flex-row ">
+              <div class="col-2 profile-pic">
+                <img src="../../static/network/avatar.png" alt="" width="10px" />
               </div>
       
-              <div class="col-11 user-info">
+              <div class="col-10 user-info p-0">
                 <h3>{{ post.owner.username }}</h3>
                 <p>{{ post.created_date }}</p>
               </div>
@@ -36,17 +34,15 @@
               <p>{{ post.content }}</p>
             </div>
       
-            <div class="likes">
-              <img src="../../static/network/like.png" alt="" />
-              <p class="m-0 ml-1">{{ post.likes }}</p>
-            </div>
-      
             <hr />
       
             <footer>
               <div class="row actions">
-                <i class="fa-brands fa-github-square"></i>
-                <!-- uses brand style -->
+                <div class="action">
+                  <!-- like button -->
+                  <i class="fa-regular fa-thumbs-up"></i>
+                  <p>Like</p>
+                </div>
               </div>
             </footer>
           </article>
@@ -55,7 +51,7 @@
         
       </div>
 
-      <aside class="col-sm-3">
+      <aside class="col-sm-2">
         <!-- Contenido aside de la derecha -->
       </aside>
     </div>

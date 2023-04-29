@@ -1,3 +1,27 @@
 main {
   background-color: #f8f8f8;
 } 
+
+.post {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  padding: 10px;
+}
+
+.actions {
+  padding: 0 20px;
+}
+
+.action {
+  display: flex;
+  justify-content: center;
+  align-items: center; 
+  gap: 10px;
+  color: #737373;
+}
+
+.action p {
+  margin: 0;
+}
