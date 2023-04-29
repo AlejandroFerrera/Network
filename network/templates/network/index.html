@@ -1,58 +1,66 @@
 {% extends "network/layout.html" %} {% block body %}
 
-<main class="feed w-50 mx-auto">
-  {% if user.is_authenticated %}
-  <form method="post" class="new-post-container text-center">
-    {% csrf_token %}
-    <img src="../../static/network/avatar.png" alt="" />
-    <textarea
-      rows="3"
-      type="textarea"
-      class="form-control"
-      name="new_post_content"
-    ></textarea>
-    <button class="button-36" type="submit">Post</button>
-  </form>
-  {% endif %}
+<main class="">
 
-  <hr />
+  <div class="wrapper container">
+    <div class="row">
+      <aside class="col-sm-3">
+        <!-- Contenido aside de la izquierda -->
+      </aside>
 
-  <h1 class="text">All Posts</h1>
+      <div class="col-sm-6">
+        <!-- Contenido central -->
+        <section class="new-post">
+          {% if user.is_authenticated %}
+            {% include 'network/new_post.html' %}
+          {% endif %} 
+        </section>
 
-  <section class="feed">
-    {% for post in posts %}
-    <article class="post border border-danger p-3 m-3">
-      <header class="row d-flex flex-row">
-        <div class="col-1 profile-pic">
-          <img src="../../static/network/avatar.png" alt="" width="20px" />
-        </div>
+        <h1 class="text">All Posts</h1>
 
-        <div class="col-11 user-info">
-          <h3>{{ post.owner.username }}</h3>
-          <p>{{ post.created_date }}</p>
-        </div>
-      </header>
-
-      <div class="content">
-        <p>{{ post.content }}</p>
+        <section class="feed">
+          {% for post in posts %}
+          <article class="post border border-danger p-3 m-3">
+            <header class="row d-flex flex-row">
+              <div class="col-1 profile-pic">
+                <img src="../../static/network/avatar.png" alt="" width="20px" />
+              </div>
+      
+              <div class="col-11 user-info">
+                <h3>{{ post.owner.username }}</h3>
+                <p>{{ post.created_date }}</p>
+              </div>
+            </header>
+      
+            <div class="content">
+              <p>{{ post.content }}</p>
+            </div>
+      
+            <div class="likes">
+              <img src="../../static/network/like.png" alt="" />
+              <p class="m-0 ml-1">{{ post.likes }}</p>
+            </div>
+      
+            <hr />
+      
+            <footer>
+              <div class="row actions">
+                <i class="fa-brands fa-github-square"></i>
+                <!-- uses brand style -->
+              </div>
+            </footer>
+          </article>
+          {% endfor %}
+        </section>
+        
       </div>
 
-      <div class="likes">
-        <img src="../../static/network/like.png" alt="" />
-        <p class="m-0 ml-1">{{ post.likes }}</p>
-      </div>
+      <aside class="col-sm-3">
+        <!-- Contenido aside de la derecha -->
+      </aside>
+    </div>
+  </div>
 
-      <hr />
-
-      <footer>
-        <div class="row actions">
-          <i class="fa-brands fa-github-square"></i>
-          <!-- uses brand style -->
-        </div>
-      </footer>
-    </article>
-    {% endfor %}
-  </section>
 </main>
 
 {% endblock %}

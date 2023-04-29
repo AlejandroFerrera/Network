@@ -1,0 +1,40 @@
+{% load static %}
+
+<head>
+    <link rel="stylesheet" href="{% static 'network/styles_new_post.css' %}">
+</head>
+
+<form method="post" class="new-post-container text-center">
+    {% csrf_token %}
+
+    <div class="share-input">
+        <img src="../../static/network/avatar.png" alt="" />
+        <input type="text" class="form-control" name="new_post_content"
+            placeholder="Share or ask something to everyone!"></input>
+    </div>
+
+
+    <div class="attachments">
+        <div class="attachment">
+            <i class="fa-solid fa-camera"></i>
+            <p>Camera</p>
+        </div>
+
+        <div class="attachment">
+            <i class="fa-regular fa-image"></i>
+            <p>Images</p>
+        </div>
+        <div class="attachment">
+            <i class="fa-regular fa-file"></i>
+            <p>Files</p>
+        </div>
+        <div class="attachment">
+            <i class="fa-solid fa-circle-play"></i>
+            <p>Video</p>
+        </div>
+        <div class="attachment">
+            <i class="fa-solid fa-location-dot"></i>
+            <p>Location</p>
+        </div>
+    </div>
+</form>
