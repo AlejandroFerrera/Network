@@ -32,6 +32,8 @@
   <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
       <a class="navbar-brand" href="#">Network</a>
+      <i class="fa-solid fa-user-chef">sdasdas</i> <!-- uses solid style -->
+      <i class="fa-solid fa-user-chef"></i> <!-- uses solid style -->
 
       <div>
         <ul class="navbar-nav mr-auto">
@@ -63,6 +65,9 @@
         </ul>
       </div>
     </nav>
+
+    {% include 'network/nav_bar.html' %}
+
 
     <div class="body">{% block body %} {% endblock %}</div>
   </body>

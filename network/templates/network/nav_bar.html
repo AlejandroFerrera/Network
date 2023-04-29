@@ -1,0 +1,27 @@
+{% load static %}
+
+<head>
+    <link rel="stylesheet" href="{% static 'network/styles_nav_bar.css' %}">
+</head>
+<nav>
+    <div class="logo">
+        <img src="../../static/network/Merger.png" alt="logo" id="logo">
+    </div>
+
+    <form>
+        <input type="text" placeholder="Search..." id="search-bar" class="search-bar">
+    </form>
+
+    <div class="language-dropbox">
+
+    </div>
+
+    <div class="interact-session">
+        <i class="fa-solid fa-comments fa-lg p-3" id="message-icon"></i>
+        <i class="fa-solid fa-bell fa-lg p-3" id="bell-icon"></i>
+    </div>
+    <div class="user-menu">
+        {{ user.username }}
+        <i class="fa-solid fa-user fa-lg" id="user-icon"></i>
+    </div>
+</nav>
