@@ -12,15 +12,36 @@ main {
 
 .actions {
   padding: 0 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 80px;
 }
 
-.action {
+.button {
+  display: inline-block;
+  border: none;
+  background-color: transparent;
+  color: #657786;
+  font-size: 14px;
+  font-weight: bold;
+  cursor: pointer;
+  outline: none;
+  transition: color 0.2s;
   display: flex;
   justify-content: center;
   align-items: center; 
   gap: 10px;
-  color: #737373;
 }
+
+.button:hover {
+  color: #1da1f2;
+}
+
+.button:active {
+  color: #e0245e;
+}
+
 
 .action p {
   margin: 0;
