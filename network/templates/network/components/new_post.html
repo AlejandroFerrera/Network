@@ -8,7 +8,16 @@
     {% csrf_token %}
 
     <div class="share-input">
-        <img src="../../static/network/avatar.png" alt="" />
+        {% if user.is_authenticated %}
+            {% if user.avatar_img %}
+
+                <img src="{{ user.avatar_img }}" alt="" />
+
+            {% else %}
+                <img src="../../static/network/dummy_avatar.png" alt="" />
+        {% endif %}
+        {% endif %}
+
         <input type="text" class="form-control" name="new_post_content"
             placeholder="Share or ask something to everyone! please"></input>
     </div>

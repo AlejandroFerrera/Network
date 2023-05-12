@@ -7,7 +7,7 @@ import datetime
 class User(AbstractUser):
     
     avatar_img = models.URLField()
-    following = models.ManyToManyField('self', related_name='followers')
+    following = models.ManyToManyField('self', related_name='followers', blank=True, symmetrical=False)
 
 class Post(models.Model):
 
