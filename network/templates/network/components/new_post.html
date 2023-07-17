@@ -1,49 +1,49 @@
 {% load static %}
 
 <head>
-    <link rel="stylesheet" href="{% static 'network/styles_new_post.css' %}">
+	<link rel="stylesheet" href="{% static 'network/css/styles_new_post.css' %}">
 </head>
 
 <form method="post" class="new-post-container text-center">
-    {% csrf_token %}
+	{% csrf_token %}
 
-    <div class="share-input">
-        {% if user.is_authenticated %}
-            {% if user.avatar_img %}
+	<div class="share-input">
+		{% if user.is_authenticated %}
+		{% if user.avatar_img %}
 
-                <img src="{{ user.avatar_img }}" alt="" />
+		<img src="{{ user.avatar_img }}" alt="" />
 
-            {% else %}
-                <img src="../../static/network/dummy_avatar.png" alt="" />
-        {% endif %}
-        {% endif %}
+		{% else %}
+		<img src="../../static/network/dummy_avatar.png" alt="" />
+		{% endif %}
+		{% endif %}
 
-        <input type="text" class="form-control" name="new_post_content"
-            placeholder="Share or ask something to everyone! please"></input>
-    </div>
+		<input type="text" class="form-control" name="new_post_content"
+			placeholder="Share or ask something to everyone! please"></input>
+	</div>
 
 
-    <div class="attachments">
-        <div class="attachment">
-            <i class="fa-solid fa-camera"></i>
-            <p>Camera</p>
-        </div>
+	<div class="attachments">
+		<div class="attachment">
+			<i class="fa-solid fa-camera"></i>
+			<p>Camera</p>
+		</div>
 
-        <div class="attachment">
-            <i class="fa-regular fa-image"></i>
-            <p>Images</p>
-        </div>
-        <div class="attachment">
-            <i class="fa-regular fa-file"></i>
-            <p>Files</p>
-        </div>
-        <div class="attachment">
-            <i class="fa-solid fa-circle-play"></i>
-            <p>Video</p>
-        </div>
-        <div class="attachment">
-            <i class="fa-solid fa-location-dot"></i>
-            <p>Location</p>
-        </div>
-    </div>
+		<div class="attachment">
+			<i class="fa-regular fa-image"></i>
+			<p>Images</p>
+		</div>
+		<div class="attachment">
+			<i class="fa-regular fa-file"></i>
+			<p>Files</p>
+		</div>
+		<div class="attachment">
+			<i class="fa-solid fa-circle-play"></i>
+			<p>Video</p>
+		</div>
+		<div class="attachment">
+			<i class="fa-solid fa-location-dot"></i>
+			<p>Location</p>
+		</div>
+	</div>
 </form>
