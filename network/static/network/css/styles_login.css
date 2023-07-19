@@ -1,11 +1,143 @@
+@font-face {
+	font-family: 'Ubuntu-Regular';
+	src: url('/static/network/fonts/Ubuntu-Regular.ttf');
+}
+
+@font-face {
+	font-family: 'Ubuntu-Bold';
+	src: url('/static/network/fonts/Ubuntu-Bold.ttf');
+}
+
+@font-face {
+	font-family: 'Ubuntu-Medium';
+	src: url('/static/network/fonts/Ubuntu-Medium.ttf');
+}
+
 main {
 	display: grid;
 	place-items: center;
 	height: 100%;
+	background-color: aliceblue;
 }
 
 section {
 	width: 850px;
 	height: 600px;
-	border: 2px solid red;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 5px 0px, rgba(0, 0, 0, 0.1) 0px 0px 1px 0px;
+	border-radius: 10px;
+	background-color: white;
 }
+
+
+section .ilustration {
+	width: 50%;
+	height: 100%;
+	background-image: url('/static/network/img/login_ilustration.svg');
+	background-size: cover;
+	background-position: center;
+}
+
+section .form {
+	width: 50%;
+	height: 100%;
+	padding: 3rem;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+section .form form {
+	margin-top: 2rem;
+}
+
+section .form h1 {
+	font-family: 'Ubuntu-Bold';
+	font-size: 2.5rem;
+	color: hsl(213, 96%, 18%);
+	margin-bottom: 1rem;
+}
+
+section .form p {
+	font-family: 'Ubuntu-Regular';
+	font-size: 16px;
+	color: hsl(231, 11%, 63%);
+	margin-bottom: 1rem;
+	line-height: 1.5;
+}
+
+section .form p span {
+	color: hsl(213, 96%, 18%);
+	font-family: 'Ubuntu-Bold';
+}
+
+.form-group label {
+	font-family: 'Ubuntu-Medium';
+	font-size: 16px;
+	color: hsl(231, 11%, 63%);
+	margin-bottom: 0.5rem;
+}
+
+.form-control {
+	width: 100%;
+	height: 40px;
+	border: 1px solid hsl(231, 11%, 63%);
+	border-radius: 5px;
+	padding: 0 1rem;
+	font-family: 'Ubuntu-Regular';
+	font-size: 16px;
+	margin-bottom: 1rem;
+	margin-top: .5rem;
+	color: hsl(213, 96%, 18%);
+}
+
+.form-group label {
+	font-family: 'Ubuntu-Medium';
+	font-size: 16px;
+	color: hsl(213, 96%, 18%);
+}
+
+.form-control:focus {
+	outline: none;
+	border: 1px solid hsl(213, 96%, 18%);
+}
+
+.form-group .form-control:focus {
+	border: 1px solid hsl(213, 96%, 18%);
+}
+
+.form-group .form-control::placeholder {
+	color: hsl(231, 11%, 63%);
+}
+
+.btn-login {
+	width: 100%;
+	height: 40px;
+	border: none;
+	border-radius: 5px;
+	background-color: hsl(213, 96%, 18%);
+	color: white;
+	font-family: 'Ubuntu-Bold';
+	font-size: 16px;
+	cursor: pointer;
+	margin-top: 1rem;
+}
+
+.btn-login:hover {
+	background-color: hsl(213, 96%, 20%);
+}
+
+.btn-login:focus {
+	outline: none;
+}
+
+/* No tienes una cuenta <p> */
+section .form p:last-of-type {
+	margin-top: 1rem;
+
+}
+
+
