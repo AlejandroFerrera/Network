@@ -16,12 +16,20 @@ def index(request):
 
         content = request.POST['new_post_content']
         Post.objects.create(owner = request.user, content = content)
-        
 
-    posts = Post.objects.all()
+    posts = Post.objects.all().order_by('-created_date')
     return render(request, "network/pages/index.html", {'posts': posts})
 
+def user_profile_view(request, username):
+    
+	try:
+		user = User.objects.get(username=username)
+	except User.DoesNotExist:
+		return render(request, "network/pages/404.html")
 
+	return render(request, "network/pages/user_profile.html", {'user': user})
+
+# AUTH
 def login_view(request):
     if request.method == "POST":
 
@@ -72,3 +80,4 @@ def register(request):
         return HttpResponseRedirect(reverse("index"))
     else:
         return render(request, "network/pages/register.html")
+# END AUTH

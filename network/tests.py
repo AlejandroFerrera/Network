@@ -1,48 +1,51 @@
 from django.test import TestCase, Client
-from .models import User, Post
 from django.urls import reverse
+from .models import Post, User
 
-
-class CreatePostTestCase(TestCase):
-
+class NetworkTestCase(TestCase):
     def setUp(self):
         self.client = Client()
         self.user = User.objects.create_user(
-            username = 'testuser',
-            password = 'testpassword'
-        )
+            username='testuser', password='testpass')
+        self.post = Post.objects.create(
+            owner=self.user, content='test post')
 
-    def test_user_posts_count(self):
-        p = Post.objects.create(content = 'test content', owner = self.user)
-        self.assertEqual(self.user.posts.count(), 1)
-
-    def test_assign_owner(self):
-        p = Post.objects.create(content='This is a test content', owner = self.user)
-        self.assertTrue(p.owner, self.user)
-        self.assertTrue(p.content, 'This is a test content')
-
-    def test_post_valid_likes(self):
-        p = Post.objects.create(content = 'This is a test content', owner = self.user)
-        self.assertTrue(p.likes >= 0)
-    
-    def test_index(self):
-        c = Client()
-        p = Post.objects.create(content = '', owner = self.user)
-        response = c.get("/")
+    def test_index_view(self):
+        response = self.client.get(reverse('index'))
         self.assertEqual(response.status_code, 200)
-        self.assertEqual(response.context["posts"].count(), 1)
-    
+        self.assertTemplateUsed(response, 'network/pages/index.html')
+        self.assertContains(response, self.post.content)
+
+    def test_login_view(self):
+        response = self.client.post(reverse('login'), {
+            'username': 'testuser',
+            'password': 'testpass'
+        })
+        self.assertEqual(response.status_code, 302)
+        self.assertRedirects(response, reverse('index'))
+
+    def test_logout_view(self):
+        self.client.login(username='testuser', password='testpass')
+        response = self.client.get(reverse('logout'))
+        self.assertEqual(response.status_code, 302)
+        self.assertRedirects(response, reverse('index'))
+
+    def test_register_view(self):
+        response = self.client.post(reverse('register'), {
+            'username': 'newuser',
+            'email': 'newuser@example.com',
+            'password': 'newpass',
+            'confirmation': 'newpass'
+        })
+        self.assertEqual(response.status_code, 302)
+        self.assertRedirects(response, reverse('index'))
+        self.assertTrue(User.objects.filter(username='newuser').exists())
+
     def test_create_post(self):
-        
-        #Logear usuario de prueba
-        response_login = self.client.login(username = 'testuser', password = 'testpassword')
-        print(response_login)
-
-        self.client.post(reverse('index'), {'new_post_content': 'Test post'})
-
-        #Comprobar que se creo el post
-        self.assertEqual(Post.objects.count(), 1)
-
-        
-    
-    
+        self.client.login(username='testuser', password='testpass')
+        response = self.client.post(reverse('index'), {
+            'new_post_content': 'new post'
+        })
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, 'new post')
+        self.assertTrue(Post.objects.filter(content='new post').exists())
