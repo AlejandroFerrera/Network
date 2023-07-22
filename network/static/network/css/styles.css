@@ -2,6 +2,11 @@ main {
   background-color: #f8f8f8;
 } 
 
+.profile-pic {
+    border-radius: 500px;
+    width: 60px;
+}
+
 .post {
   background-color: #fff;
   border: 1px solid #ddd;

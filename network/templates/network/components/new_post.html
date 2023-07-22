@@ -11,10 +11,10 @@
 		{% if user.is_authenticated %}
 		{% if user.avatar_img %}
 
-		<img src="{{ user.avatar_img }}" alt="" />
+		<img class="profile-pic" src="{{ user.avatar_img }}" alt="" />
 
 		{% else %}
-		<img src="../../static/network/dummy_avatar.png" alt="" />
+		<img class="profile-pic" src="../../static/network/dummy_avatar.png" alt="" />
 		{% endif %}
 		{% endif %}
 

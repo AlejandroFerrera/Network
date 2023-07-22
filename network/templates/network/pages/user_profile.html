@@ -1,4 +1,20 @@
-<h1>User Profile Page</h1>
+{% extends 'network/layout.html' %}
 
-<p>{{ user.username }}</p>
+{% block body %}
 
+<div class="w-100 mx-auto">
+	{% include 'network/components/profile_card.html' %}
+</div>
+
+<div class="divider">
+	<br>
+	<br>
+	<br>
+</div>
+
+<div class="w-50 mx-auto">
+	{% include 'network/components/feed.html' %}
+</div>
+
+
+{% endblock %}

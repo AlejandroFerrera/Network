@@ -1,0 +1,25 @@
+<!-- Una card en django para mostrar el perfil de un usuario. Tiene que tener esta informacion:
+- Foto de perfil
+- Nombre de usuario
+- Numero de seguidores
+- Numero de seguidos
+- Numero de publicaciones -->
+{% load static %}
+<head>
+	<link rel="stylesheet" href="{% static 'network/css/styles_profile_card.css' %}">
+</head>
+
+<article class="profile-card">
+	<div class="cover">
+	</div>
+
+	<div class="profile-pic-page">
+		{% if user.avatar_img %}
+		<img src="{{ user.avatar_img }}" alt="" width="80px" />
+		{% else %}
+		<img src="{% static 'network/img/dummy_avatar.png' %}" alt="" width="80px" />
+		{% endif %}
+	</div>
+
+
+</article>
