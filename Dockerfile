@@ -1,5 +1,5 @@
 
-FROM python:3.13.0a2-slim-bullseye
+FROM python:3.13.0a4-slim-bullseye
 COPY . /usr/src/app
 WORKDIR /usr/src/app
 RUN pip install -r requeriments.txt
